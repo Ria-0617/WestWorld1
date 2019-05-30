@@ -17,9 +17,11 @@
 #include "EntityNames.hpp"
 #include "EnterMineAndDigForNugget.hpp"
 
+class Miner;
+
 class EnterMineAndDigForNugget;
 
-class QuenchThirst : public State {
+class QuenchThirst : public State<Miner> {
 private:
     
     QuenchThirst(){}

@@ -19,10 +19,12 @@
 #include "EnterMineAndDigForNugget.hpp"
 #include "GoHomeAndSleepTilRested.hpp"
 
+class Miner;
+
 class EnterMineAndDigForNugget;
 class GoHomeAndSleepTilRested;
 
-class VisitBankAndDepositGold : public State {
+class VisitBankAndDepositGold : public State<Miner> {
 private:
     VisitBankAndDepositGold(){}
     

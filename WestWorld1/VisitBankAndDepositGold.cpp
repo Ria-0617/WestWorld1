@@ -40,11 +40,11 @@ void VisitBankAndDepositGold::Execute(Miner* pMiner){
     if (pMiner->Wealth() >= ComfortLevel){
         cout << GetNameOfEntity(pMiner->ID()) << ": " << "WooHoo! Rich enough for now. Back home to mah li'lle lady" << endl;
         
-        pMiner->ChangeState(GoHomeAndSleepTilRested::Instance());
+        pMiner->GetFSM()->ChangeState(GoHomeAndSleepTilRested::Instance());
     }
     //otherwise get more gold
     else{
-        pMiner->ChangeState(EnterMineAndDigForNugget::Instance());
+        pMiner->GetFSM()->ChangeState(EnterMineAndDigForNugget::Instance());
     }
 }
 

@@ -32,7 +32,7 @@ void QuenchThirst::Execute(Miner* pMiner){
         
         cout << GetNameOfEntity(pMiner->ID()) << ": " << "That's mighty fine sippin liquer" << endl;
         
-        pMiner->ChangeState(EnterMineAndDigForNugget::Instance());
+        pMiner->GetFSM()->ChangeState(EnterMineAndDigForNugget::Instance());
     }else{
         cout << "\nERROR!\nERROR!\nERROR!";
     }

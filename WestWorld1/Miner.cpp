@@ -9,30 +9,25 @@
 #include "Miner.hpp"
 
 Miner::Miner(int id):BaseGameEntity(id),
-m_Location(shack),
-m_iGoldCarried(0),
-m_iMoneyInBank(0),
-m_iThirst(0),
-m_iFatigue(0),
-m_pCurrentState(GoHomeAndSleepTilRested::Instance()){
+                     m_Location(shack),
+                     m_iGoldCarried(0),
+                     m_iMoneyInBank(0),
+                     m_iThirst(0),
+                     m_iFatigue(0)
+{
+    m_pStateMachine = new StateMachine<Miner>(this);
+    m_pStateMachine->SetCurrentState(GoHomeAndSleepTilRested::Instance());
     
+}
+
+Miner::~Miner(){
+    delete m_pStateMachine;
 }
 
 void Miner::Update(){
     m_iThirst += 1;
     
-    if(m_pCurrentState){
-        m_pCurrentState->Execute(this);
-    }
-}
-
-void Miner::ChangeState(State* pNewState){
-    // それぞれのメソッドを呼び出そうとする前に両方のステートが有効かを確かめる
-    assert(m_pCurrentState && pNewState);
-    
-    m_pCurrentState->Exit(this);
-    m_pCurrentState = pNewState;
-    m_pCurrentState->Enter(this);
+    m_pStateMachine->Update();
 }
 
 //-----------------------------------------------------------------------------

@@ -18,9 +18,11 @@
 
 #include "EnterMineAndDigForNugget.hpp"
 
+class Miner;
+
 class EnterMineAndDigForNugget;
 
-class GoHomeAndSleepTilRested : public State {
+class GoHomeAndSleepTilRested : public State<Miner> {
 private:
     
     GoHomeAndSleepTilRested(){}

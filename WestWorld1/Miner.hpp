@@ -14,6 +14,7 @@
 #include "BaseGameEntity.hpp"
 #include "Locations.hpp"
 #include "State.hpp"
+#include "StateMachine.hpp"
 
 #include "GoHomeAndSleepTilRested.hpp"
 
@@ -28,8 +29,9 @@ const int TirednessThreshold = 5;
 
 class Miner : public BaseGameEntity {
 private:
-    // Stateのインスタンスへのポインタ
-    State* m_pCurrentState;
+    
+    // ステートマシンクラスのインスタンス
+    StateMachine<Miner>* m_pStateMachine;
     
     // 鉱夫がが現在いる場所
     location_type m_Location;
@@ -48,12 +50,10 @@ private:
     
 public:
     
-    Miner(int ID);
+    Miner(int id);
+    ~Miner();
     
     void Update();
-    
-    void ChangeState(State* pNewState);
-    
     
     location_type Location()const{return m_Location;}
     void          ChangeLocation(const location_type loc){m_Location=loc;}
@@ -73,6 +73,9 @@ public:
     
     bool          Thirsty()const;
     void          BuyAndDrinkAWhiskey(){m_iThirst = 0; m_iMoneyInBank-=2;}
+    
+    
+    StateMachine<Miner>* GetFSM()const{return m_pStateMachine;}
     
 };
 

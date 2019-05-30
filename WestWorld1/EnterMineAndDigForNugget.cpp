@@ -38,12 +38,12 @@ void EnterMineAndDigForNugget::Execute(Miner* pMiner){
     
     // 十分金を掘ったら、銀行に行って預ける
     if(pMiner->PocketsFull()){
-        pMiner->ChangeState(VisitBankAndDepositGold::Instance());
+        pMiner->GetFSM()->ChangeState(VisitBankAndDepositGold::Instance());
     }
     
     // 喉が渇いたらウイスキーを飲みに行く
     if(pMiner->Thirsty()){
-        pMiner->ChangeState(QuenchThirst::Instance());
+        pMiner->GetFSM()->ChangeState(QuenchThirst::Instance());
     }
 }
 
