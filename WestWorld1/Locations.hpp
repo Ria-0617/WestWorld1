@@ -14,6 +14,6 @@ enum location_type {
     goldmine,
     bank,
     saloon
-}
+};
 
 #endif /* Locations_hpp */

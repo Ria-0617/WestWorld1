@@ -17,10 +17,8 @@ enum
     ent_Elsa
 };
 
-inline std::string GetNameOfEntity(int n)
-{
-    switch(n)
-    {
+inline std::string GetNameOfEntity(int n) {
+    switch(n) {
         case ent_Miner_Bob:
             return "Miner Bob";
             

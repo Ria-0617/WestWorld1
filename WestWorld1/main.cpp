@@ -7,8 +7,16 @@
 //
 
 #include <iostream>
+#include "EntityNames.hpp"
+#include "Miner.hpp"
+
 
 int main(int argc, const char * argv[]) {
+    Miner miner(ent_Miner_Bob);
+    
+    for(int i = 0;i < 30; ++i){
+        miner.Update();
+    }
     
     
     return 0;

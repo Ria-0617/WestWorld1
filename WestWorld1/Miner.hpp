@@ -10,9 +10,12 @@
 #define Miner_hpp
 
 #include <iostream>
+#include <cassert>
 #include "BaseGameEntity.hpp"
 #include "Locations.hpp"
 #include "State.hpp"
+
+#include "GoHomeAndSleepTilRested.hpp"
 
 //the amount of gold a miner must have before he feels comfortable
 const int ComfortLevel       = 5;

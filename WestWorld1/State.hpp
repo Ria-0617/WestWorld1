@@ -9,7 +9,7 @@
 #ifndef State_hpp
 #define State_hpp
 
-#include <iostream>
+class Miner;
 
 class State{
 public:
